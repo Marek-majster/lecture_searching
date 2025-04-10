@@ -34,14 +34,27 @@ def pattern_search(sequence,vzor):
     kanal["index"] = pozice
     return kanal
 
+def binary_search(sequence, cislo):
+    left = 0
+    right = len(sequence) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if sequence[mid] == cislo:
+            return print(f"Číslo {cislo} se nachází na pozici {mid}")
+        elif sequence[mid] < cislo:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return print("None")
 
 def main(file_name,field,number,vzor):
     a = read_data(file_name,field)
  #   b = linear_search(a,number)
-    c = pattern_search(a,vzor)
-    return print(f"{c}")
+ #   c = pattern_search(a,vzor)
+    d = binary_search(a,number)
+    return print(f"{d}")
 
 
 
 if __name__ == '__main__':
-    main("sequential.json","dna_sequence", 0, "ATA")
+    main("sequential.json","ordered_numbers", 8, "ATA")
